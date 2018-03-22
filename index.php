@@ -54,10 +54,21 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
     }
  
     // kode aplikasi nanti disini
-    if($userMessage == "contoh text message"){
-$textMessageBuilder = new TextMessageBuilder('ini adalah contoh text message');
-$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
-return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
+    
+ $data = json_decode($body, true);
+if(is_array($data['events'])){
+    foreach ($data['events'] as $event)
+    {
+        if ($event['type'] == 'message')
+        {
+            if($userMessage == "contoh text message"){
+            $textMessageBuilder = new TextMessageBuilder('ini adalah contoh text message');
+            $result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+            return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
+            }
+        }
+    }
+     $bot->replyText($replyToken, 'ini pesan balasan');
 }
 });
  
