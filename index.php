@@ -55,7 +55,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
  
     // kode aplikasi nanti disini
     if($userMessage == "contoh text message"){
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('ini adalah contoh text message');
+$textMessageBuilder = new TextMessageBuilder('ini adalah contoh text message');
 $result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 }
