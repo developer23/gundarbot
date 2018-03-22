@@ -74,11 +74,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
             }
         }
     }
-    $bot->replyText($replyToken, 'ini pesan balasan cug');
-    $packageId = 1;
-    $stickerId = 3;
-    $stickerMessageBuilder = new StickerMessageBuilder($packageId, $stickerId);
-    $bot->replyMessage($replyToken, $stickerMessageBuilder);
+    $bot->replyText($replyToken, 'ini pesan balasan cug'); 
 });
  
 $app->run();
