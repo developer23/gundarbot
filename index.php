@@ -64,7 +64,7 @@ if(is_array($data['events'])){
             if($userMessage == "contoh text message"){
             $textMessageBuilder = new TextMessageBuilder('ini adalah contoh text message');
             $result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
-            return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
+             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());  
             }
         }
     }
